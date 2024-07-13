@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "test": "jest",
+    "start": "node ./src/index.mjs"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.613.0",
+    "aws-sdk": "^2.1657.0",
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "fs": "^0.0.1-security",
+    "glob": "^11.0.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.24.7",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0"
+  }
+}
