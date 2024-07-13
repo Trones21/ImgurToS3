@@ -24,8 +24,8 @@ I take all my screenshots with Greenshot and put these links directly in my Mark
 
 1. Clone the repository:
     ```sh
-    git clone <tbd>
-    cd imgur-link-processor
+    git clone https://github.com/Trones21/ImgurToS3.git
+    cd ImgurToS3
     ```
 
 2. Install the dependencies:
@@ -45,32 +45,54 @@ I take all my screenshots with Greenshot and put these links directly in my Mark
 
 1. Run the tool:
     ```sh
-    npm run start
+    npm start
     ```
 
 2. The tool will:
     - Search for Imgur links in the files within the specified directory.
-    - Write the list of found Imgur links to `imgur_links.txt`.
     - Retrieve the list of images already in the S3 bucket.
     - Identify which Imgur images are missing from the S3 bucket.
     - Download the missing images from Imgur.
     - Upload the missing images to the S3 bucket.
+    - Write a list of "bad links" to ```./failedToGetFromImgurl.txt```
+
+- This does not currently check for the success of the uploads to S3.. but you could always just run it again (and since it does a diff you will know if any failed) 
+
+**Note: Check out the regex (that matches links) & the glob pattern(for matching files), you may need/want to modify these to support your use case. My links are all wrapped in (), so the Regex is currently setup to do that (also I didn't put any time into making it very robust, it works for me as it is)**
 
 ## Example
 
 ```sh
-npm run start
+npm start
 ```
 
 After running the script, you should see output similar to:
 
 ```
-Imgur links written to imgur_links.txt
-Fetched existing images from S3
-Found missing images
-Downloaded missing images
-Uploaded missing images to S3
+Found Imgur links: [
+  'https://i.imgur.com/123.png',
+  'https://i.imgur.com/456.png',
+  'https://i.imgur.com/foo.png',
+]
+Images in S3: [
+  '123.png', '456.png',
+]
+Missing images: ['foo.png',]
+Downloaded images: ['foo.png',]
+Uploaded images to S3
 ```
+
+## Tests
+
+```sh
+npm test
+```
+
+Test your AWS login: 
+```sh
+npx jest tests/apiCalls/awsLogin.test.js
+```
+
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
