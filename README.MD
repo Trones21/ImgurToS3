@@ -107,3 +107,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Issues
 If you encounter any issues, please feel free to open an issue on the GitHub repository.
 
+## Contact
+For questions, suggestions, or feedback, please contact [imgurtos3@gmailisprofessional.com](mailto:imgurtos3@gmailisprofessional.com)
